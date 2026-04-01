@@ -1,0 +1,49 @@
+{
+    "name": "Project",
+    "type": "object",
+    "properties": {
+        "title": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
+        },
+        "impact": {
+            "type": "string",
+            "description": "Impact and outcomes"
+        },
+        "category": {
+            "type": "string",
+            "enum": [
+                "education",
+                "health",
+                "environment",
+                "community",
+                "empowerment"
+            ]
+        },
+        "image_url": {
+            "type": "string"
+        },
+        "status": {
+            "type": "string",
+            "enum": [
+                "ongoing",
+                "completed",
+                "upcoming"
+            ],
+            "default": "ongoing"
+        },
+        "beneficiaries": {
+            "type": "number",
+            "description": "Number of people benefited"
+        },
+        "location": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "title",
+        "description"
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "name": "Volunteer",
+    "type": "object",
+    "properties": {
+        "full_name": {
+            "type": "string",
+            "description": "Full name of volunteer"
+        },
+        "email": {
+            "type": "string",
+            "format": "email"
+        },
+        "phone": {
+            "type": "string"
+        },
+        "age": {
+            "type": "number"
+        },
+        "address": {
+            "type": "string"
+        },
+        "skills": {
+            "type": "string",
+            "description": "Skills and interests"
+        },
+        "motivation": {
+            "type": "string",
+            "description": "Why they want to volunteer"
+        },
+        "status": {
+            "type": "string",
+            "enum": [
+                "pending",
+                "approved",
+                "rejected"
+            ],
+            "default": "pending"
+        }
+    },
+    "required": [
+        "full_name",
+        "email",
+        "phone"
+    ]
+}

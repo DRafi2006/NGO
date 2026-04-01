@@ -1,0 +1,30 @@
+{
+    "name": "GalleryPhoto",
+    "type": "object",
+    "properties": {
+        "title": {
+            "type": "string"
+        },
+        "image_url": {
+            "type": "string"
+        },
+        "category": {
+            "type": "string",
+            "enum": [
+                "events",
+                "projects",
+                "team",
+                "community",
+                "celebrations"
+            ]
+        },
+        "description": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "title",
+        "image_url",
+        "category"
+    ]
+}
