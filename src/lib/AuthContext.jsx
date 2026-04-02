@@ -3,21 +3,31 @@ import React, { createContext, useState, useContext } from 'react';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [user, setUser] = useState(() => {
+        const saved = localStorage.getItem('user');
+        return saved ? JSON.parse(saved) : null;
+    });
+    const [isAuthenticated, setIsAuthenticated] = useState(() => {
+        return localStorage.getItem('isAuthenticated') === 'true';
+    });
     const [isLoadingAuth] = useState(false);
     const [isLoadingPublicSettings] = useState(false);
     const [authError] = useState(null);
     const [appPublicSettings] = useState(null); 
 
     const fakeLogin = () => {
-        setUser({ id: '1', name: 'Admin User', role: 'admin' });
+        const fakeUser = { id: '1', name: 'Admin User', role: 'admin' };
+        setUser(fakeUser);
         setIsAuthenticated(true);
+        localStorage.setItem('user', JSON.stringify(fakeUser));
+        localStorage.setItem('isAuthenticated', 'true');
     };
 
     const logout = () => {
         setUser(null);
         setIsAuthenticated(false);
+        localStorage.removeItem('user');
+        localStorage.removeItem('isAuthenticated');
     };
 
     const navigateToLogin = () => {
